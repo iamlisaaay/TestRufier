@@ -5,6 +5,14 @@ from PyQt5.QtGui import QFont
 from thirtwindow import *
 
 
+class Experiment():
+    def __init__(self, age, test1, test2, test3):
+        self.age = int(age)
+        self.test1 = int(test1)
+        self.test2 = int(test2)
+        self.test3 = int(test3)
+
+
 class SecondWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -124,4 +132,6 @@ class SecondWindow(QWidget):
 
     def next_window(self):
         self.hide()
-        self.win_3 = ThirdWindow()
+        self.exp = Experiment(self.le_age.text(),
+                              self.le_test1.text(), self.le_test2.text(), self.le_test3.text())
+        self.win_3 = ThirdWindow(self.exp)
